@@ -63,9 +63,9 @@
                 <!-- department -->
                 <div class="form-group">
                     <label >department</label>
-                    <select class="form-control"  name="department.id" >
-                        <!--<option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.departmentName}"></option>-->
-                        <option th:selected="${emp!=null}?${dept.departmentName == emp.departmentle1}" th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.departmentName}"></option>
+                    <select class="form-control"  name="department" >
+                        <!--&lt;!&ndash;<option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.departmentName}"></option>&ndash;&gt;-->
+                        <option th:selected="${emp!=null}?${dept.departmentName == emp.department}" th:each="dept:${depts}" th:value="${dept.departmentName}" th:text="${dept.departmentName}"></option>
                     </select>
                     <!--<input type="department" class="form-control" id="department"  name="department" placeholder="AA" th:value="${emp!=null}?${emp.department}">-->
                 </div>

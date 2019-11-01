@@ -76,6 +76,7 @@ public class EmployeeController {
     public String updateEmployee(Employee employee){
         employeeMapper.updateEmployee(employee.getId(), employee.getLastName(), employee.getGender(), employee.getEmail(),
                 employee.getDepartment(), employee.getBirth());
+        System.out.println("修改:"+employee.getId()+employee.getDepartment());
         return "redirect:/emps";
     }
 
