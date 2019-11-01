@@ -1,6 +1,8 @@
 package com.hgd.sbdb.Controller;
 
+import com.hgd.sbdb.entities.Department;
 import com.hgd.sbdb.entities.Employee;
+import com.hgd.sbdb.mapper.DepartmentMapper;
 import com.hgd.sbdb.mapper.EmployeeMapper;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class EmployeeController {
     @Autowired
     EmployeeMapper employeeMapper;
 
+    @Autowired
+    DepartmentMapper departmentMapper;
+
     @RequestMapping("/")
     public String toLoginPage(){
         return "login";
@@ -38,6 +43,10 @@ public class EmployeeController {
     //跳转到员工添加页面
     @GetMapping("/emp")
     public String toAddPage(Model model){
+        //先查询出所有的部门
+        Collection<Department> departments = departmentMapper.getDepartments();
+        model.addAttribute("depts", departments);
+        System.out.println(departments);
         return "emp/add";
     }
 
@@ -54,6 +63,11 @@ public class EmployeeController {
     public String toEditPage(@PathVariable("id") Integer id, Model model){
         Employee employee = employeeMapper.getEmployeeById(id);
         model.addAttribute("emp", employee);
+        //查询出所有的部门
+        Collection<Department> departments = departmentMapper.getDepartments();
+        model.addAttribute("depts", departments);
+        System.out.println("修改"+departments);
+        //回到修改页面
         return "emp/add";
     }
 
